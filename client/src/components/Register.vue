@@ -2,9 +2,8 @@
   <v-layout column>
     <v-flex xs6>
     <div class="d-flex justify-center mb-6">
-      <v-card class="mx-auto" max-width="500" elevation="2">
-        <v-card-title>Register</v-card-title>
-        <div class="pa-4">
+      <panel title="Register">
+
           <form
             name="tab-tracker-form"
             autocomplete="off">
@@ -20,8 +19,10 @@
               autocomplete="new-password"
             ></v-text-field>
           </form>
+
           <br>
-          <div class="danger-alert error" v-html="error" />
+          <div class="danger-alert error" v-html="error"></div>
+
           <br>
           <v-btn
             dark
@@ -29,9 +30,9 @@
             @click="register">
             Register
           </v-btn>
-        </div>
-      </v-card>
-      </div>
+
+      </panel>
+    </div>
     </v-flex>
   </v-layout>
 </template>
@@ -39,6 +40,7 @@
 <script>
 
 import AuthenticationService from '@/services/AthenticationService'
+import Panel from '@/components/Panel'
 
 export default {
   name: 'Register',
@@ -66,6 +68,9 @@ export default {
         this.error = error.response.data.error
       }
     }
+  },
+  components: {
+    Panel
   }
 }
 </script>

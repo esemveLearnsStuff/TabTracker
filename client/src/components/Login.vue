@@ -1,10 +1,8 @@
 <template>
   <v-layout column>
     <v-flex xs6>
-    <div class="d-flex justify-center mb-6">
-      <v-card class="mx-auto" max-width="500" elevation="2">
-        <v-card-title>Login</v-card-title>
-        <div class="pa-4">
+    <panel title="Login">
+
           <form
             name="tab-tracker-form"
             autocomplete="off">
@@ -29,9 +27,9 @@
             @click="login">
             Login
           </v-btn>
-        </div>
-      </v-card>
-      </div>
+
+    </panel>
+
     </v-flex>
   </v-layout>
 </template>
@@ -39,6 +37,7 @@
 <script>
 
 import AuthenticationService from '@/services/AthenticationService'
+import Panel from '@/components/Panel'
 
 export default {
   name: 'Login',
@@ -66,6 +65,9 @@ export default {
         this.error = error.response.data.error
       }
     }
+  },
+  components: {
+    Panel
   }
 }
 </script>

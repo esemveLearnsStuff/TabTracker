@@ -10,18 +10,14 @@
 </template>
 
 <script>
+
 export default {
   name: 'Panel',
-  data () {
-    return {
-        title: 'hello'
-     
-    }
-  },
-  methods: {
-
-  }
+  props: [
+    'title'
+  ]
 }
+
 </script>
 
 <style scoped>
