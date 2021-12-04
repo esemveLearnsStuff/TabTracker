@@ -1,19 +1,53 @@
 <template>
-  <div>
-    Soon...
-  </div>
+ <v-layout row>
+
+    <v-flex xs6>
+      <v-card>
+
+            <h1>{{ song.title }}</h1>
+            <h3>{{ song.artist }}</h3>
+            <h5>{{ song.album }}</h5>
+            <h6>{{ song.genre }}</h6>
+
+            <img class="album-image" :src="song.albumImageUrl" />
+
+            <youtube :youtubeId="song.youtubeId" />
+      </v-card>
+    </v-flex>
+
+    <v-flex xs6 class="flex-row-reverse">
+        <v-card>
+            {{ song.lyrics }}
+
+            <hr>
+
+            <pre>
+            {{ song.tab.trim() }}
+            </pre>
+        </v-card>
+    </v-flex>
+
+  </v-layout>
 </template>
 
 <script>
+import SongsService from '@/services/SongsService'
+import Youtube from '@/components/Youtube'
+
 export default {
   name: 'ViewSong',
   data () {
     return {
-
+      song: null
     }
   },
-  methods: {
-
+  components: {
+    Youtube
+  },
+  async mounted () {
+    const songId = this.$store.state.route.params.songId
+    this.song = (await SongsService.show(songId)).data
+    console.log(this.song)
   }
 }
 </script>
