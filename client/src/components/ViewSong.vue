@@ -17,13 +17,11 @@
 
     <v-flex xs6 class="flex-row-reverse">
         <v-card>
-            {{ song.lyrics }}
+            <lyrics :song="song" />
 
             <hr>
 
-            <pre>
-            {{ song.tab.trim() }}
-            </pre>
+            <tab :song="song" />
         </v-card>
     </v-flex>
 
@@ -33,6 +31,8 @@
 <script>
 import SongsService from '@/services/SongsService'
 import Youtube from '@/components/Youtube'
+import Lyrics from '@/components/Lyrics'
+import Tab from '@/components/Tab'
 
 export default {
   name: 'ViewSong',
@@ -42,7 +42,9 @@ export default {
     }
   },
   components: {
-    Youtube
+    Youtube,
+    Lyrics,
+    Tab
   },
   async mounted () {
     const songId = this.$store.state.route.params.songId
